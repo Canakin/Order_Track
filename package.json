@@ -7,8 +7,12 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.3.0",
     "bootstrap": "^4.6.0",
+    "chart.js": "^2.9.4",
+    "chartkick": "^3.2.1",
     "jquery": "^3.6.0",
+    "mapbox-gl": "^2.1.1",
     "popper.js": "^1.16.1",
+    "tlx-chart": "0.0.8",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",

@@ -1,0 +1,11 @@
+table {
+  width:100%;
+  tr th,td {
+    border: 1px solid black;
+    text-align: center;
+  }
+  #mainTableHeading {
+    background-color:$appdarkgreen;
+    color:white;
+  }
+}

@@ -1,0 +1,33 @@
+<div class='container'>
+  <div class='card-body' id='orderDetail'>
+    <h2><%= @customer.company_name %></h2>
+    <hr>
+    <p align='center'><b>Contact Title:</b> <%= @customer.contact_title %></p>
+    <p align='center'><b>Address:</b> <%= @customer.address %></p>
+    <p align='center'><b>City: </b><%= @customer.city %></p>
+    <p align='center'><b>Postal Code:</b> <%= @customer.postal_code %></p>
+    <p align='center'><b>Country:</b> <%= @customer.country %></p>
+    <p align='center'><b>Phone:</b> <%= @customer.phone %></p>
+    <p align='center'><b>Fax:</b> <%= @customer.fax %></p>
+    <div>
+    <h3>Customer Orders </h3>
+    <hr>
+    <% if @orders.kind_of?(String) %>
+      <p align='center'><%= @orders %></p>
+    <% else  %>
+      <% @orders.each do |order|  %>
+        <p align='center'><b>Order ID:</b> <%= order.orderid %></p>
+        <p align='center'><b>Order Employee ID:</b> <%= order.employee_id  %><p>
+        <%= link_to "See order details",order_path(order), class:'btn btn-secondary', id:'btn_center' %>
+        <hr>
+      <% end %>
+    <% end %>
+    </div>
+    <div id='customerButtons'>
+      <%= link_to "See all Customers", customers_path, class:'btn btn-primary' %>
+      <%= link_to "Edit Customer", edit_customer_path, class:'btn btn-secondary' %>
+      <%= link_to "Delete Customer", customer_path, method: :delete, data: { confirm: 'Are you sure you want to delete the customer?'}, class:'btn btn-danger'%>
+    </div>
+  </div>
+</div>
+

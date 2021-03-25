@@ -1,0 +1,192 @@
+<div class='container'>
+  <h1>Lets Dive Into Statistics</h1>
+  <hr>
+  <div class='card-body' id='statsIntro'>
+    <p>Statistics allows you to understand and use data for making rational decisions. On our page, we show you the some important statistics abou the customer, order and products data. With statistical analysis, you can have better insight about the subject and have a clear understanding on the major topics that you have to deal with. On this page we help you to see the descriptive stats and useful distribution graphs with the aim of better understanding.</p>
+    <%= image_tag "https://res.cloudinary.com/ds2odybte/image/upload/v1616088577/statistics_pic_ai4kiq.jpg", width:"400px", height:"300px" %>
+  </div>
+  <h3>Lets see the descriptive stats <i class='fas fa-chart-line'></i></h3>
+  <div class="arrow bounce"></div>
+  <br>
+  <h2>Descriptive Statistics for Products</h2>
+  <table>
+    <tbody>
+      <tr>
+        <th colspan='6' id='mainTableHeading'>Product Prices</th>
+      </tr>
+      <tr>
+        <th>Sample Size</th>
+        <th>Mean</th>
+        <th>Standard Deviation</th>
+        <th>Maximum</th>
+        <th>Minimum</th>
+        <th>Range</th>
+      </tr>
+      <tr>
+        <td><p><%= @sample_size %></p></td>
+        <td><p><%= @average_price %></p></td>
+        <td><p><%= @std_price %></p></td>
+        <td><p><%= @max_price %></p></td>
+        <td><p><%= @min_price %></p></td>
+        <td><p><%= @max_price - @min_price %></p></td>
+      </tr>
+      <tr>
+        <td colspan='6'><b><i>Comment:</i></b> We have <%= @sample_size %> different types of products in total in our product orders list. The average of prices of all these <%= @sample_size %> product are around <%= @average_price %> $ per product. Almost <%= (@sample_size * 0.68).round(0) %> of the product have a price between <%= (@average_price - @std_price).round(0) %> $ per unit and <%= (@average_price + @std_price).round(0) %> $ per unit. The highest price on our product list is <%= @max_price %> $ per unit, while the lowest price in our product list is  <%= @min_price %> $ per unit.</td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <table>
+    <tbody>
+      <tr>
+        <th colspan='6' id='mainTableHeading'>Product Quantity</th>
+      </tr>
+      <tr>
+        <th>Sample Size</th>
+        <th>Mean</th>
+        <th>Standard Deviation</th>
+        <th>Maximum</th>
+        <th>Minimum</th>
+        <th>Range</th>
+      </tr>
+      <tr>
+        <td><p><%= @sample_size %></p></td>
+        <td><p><%= @average_quantity %></p></td>
+        <td><p><%= @std_quant  %></p></td>
+        <td><p><%= @max_quant %></p></td>
+        <td><p><%= @min_quant %></p></td>
+        <td><p><%= @max_quant - @min_quant %></p></td>
+      </tr>
+      <tr>
+        <td colspan='6'><b><i>Comment:</i></b> We have <%= @sample_size %> different types of products in total in our product orders list. The average of quantity of all these <%= @sample_size %> product orders are around <%= @average_quantity %> units. Almost <%= (@sample_size * 0.68).round(0) %> of the product orders have quantity between <%= (@average_quantity - @std_quant).round(0) %> units and <%= (@average_quantity + @std_quant).round(0) %> units. The highest quantity of ordered products is <%= @max_quant %> units, while the lowest qunatity of product orders are  <%= @min_quant %> units.</td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <table>
+    <tbody>
+      <tr>
+        <th colspan='6' id='mainTableHeading'>Product Discount</th>
+      </tr>
+      <tr>
+        <th>Sample Size</th>
+        <th>Mean</th>
+        <th>Standard Deviation</th>
+        <th>Maximum</th>
+        <th>Minimum</th>
+        <th>Range</th>
+      </tr>
+      <tr>
+        <td><p><%= @sample_size %></p></td>
+        <td><p><%= @average_discount * 100 %>%</p></td>
+        <td><p><%= @std_discount * 100 %>%</p></td>
+        <td><p><%= @max_discount * 100 %>%</p></td>
+        <td><p><%= @min_discount * 100 %>%</p></td>
+        <td><p><%= (@max_discount - @min_discount) * 100 %>%</p></td>
+      </tr>
+      <tr>
+        <td colspan='6'><b><i>Comment:</i></b> We have <%= @sample_size %> different types of products in total in our product orders list. The average of discount of all these <%= @sample_size %> product orders are around <%= @average_discount*100 %>%. Almost <%= (@sample_size * 0.68).round(0) %> of the product orders have discount between <%= (@average_discount - @std_discount).round(3)*100 %>% and <%= (@average_discount + @std_discount).round(3)*100 %>%. The highest discount of ordered products is <%= @max_discount*100 %>%, while the lowest qunatity of product orders are  <%= @min_discount*100 %>%.</td>
+      </tr>
+    </tbody>
+  </table>
+  <div id='chart'>
+    <hr>
+    <h1>Customer Country Distribution</h1>
+    <div class="chart-wrap vertical">
+      <div id="chartContainer" data-markers="<%= @new_list %>"style="height: 370px; width: 100%;"></div>
+      <p>The graph pies show where most customers come from. Largest pies show the country that the customers are mostly come from, while smallest pie belongs to the country where the least number of customers come from. </p>
+    </div>
+    <h1>Order Ship Country Distribution</h1>
+    <div>
+      <div id="chartContainerTwo" data-markers="<%= @new_order_list %>"style="height: 370px; width: 100%;"></div>
+      <p><i>The graph pies show the country where most orders are shipped to. Largest pies show the country that the orders are mostly shipped to, while smallest pie belongs to the country where the least number of orders shipped to. </i></p>
+    </div>
+    <h1>Order Freight Costs</h1>
+    <div>
+      <div id="chartContainerThree" data-markers="<%= @new_order_freight %>"style="height: 370px; width: 100%;"></div>
+      <p><i>The graph bars show the freight costs of all orders in our database. Highest column shows the order with highest freight cost, while the lowest column shows the order with lowest freight cost. </i></p>
+    </div>
+    <div id='orderFreightTable'>
+      <table>
+        <tbody>
+          <tr>
+            <th colspan=6 id='mainTableHeading'>Order Freight Costs</th>
+          </tr>
+          <tr>
+            <th>Sample Size</th>
+            <th>Mean</th>
+            <th>Standard Deviation</th>
+            <th>Maximum</th>
+            <th>Minimum</th>
+            <th>Range</th>
+          </tr>
+          <tr>
+            <td><p><%= @order_sample %></p></td>
+            <td><p><%= @average_freight %></p></td>
+            <td><p><%= @std_freight %></p></td>
+            <td><p><%= @max_freight %></p></td>
+            <td><p><%= @min_freight %></p></td>
+            <td><p><%= (@max_freight - @min_freight).round(1) %></p></td>
+          </tr>
+          <tr>
+            <td colspan='6'><b><i>Comment:</i></b> We have <%= @order_sample %> different orders in total in our list. The average freight costs of all these <%= @order_sample %> orders are around <%= @average_freight %> $. Almost <%= (@order_sample * 0.68).round(0) %> of the order freight costs stands between <%= (@average_freight - @std_freight).round(0) %> $ and <%= (@average_freight + @std_freight).round(0) %>$. The highest freight cost of an order is <%= @max_freight %> $, while the lowest freight cost is  <%= @min_freight %> $.</td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <%= link_to "Go back to Top", "#statsIntro", class:'btn btn-secondary', id:'btn_center'%>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  const countries = JSON.parse(document.getElementById('chartContainer').dataset.markers)
+  const shipCountries = JSON.parse(document.getElementById('chartContainerTwo').dataset.markers)
+  const newOrderFreight = JSON.parse(document.getElementById('chartContainerThree').dataset.markers)
+  window.onload = function () {
+  let chartOne = new CanvasJS.Chart("chartContainer", {
+    theme: "dark2",
+    animationEnabled: true,
+    title:{
+      text: ""
+    },
+    data: [
+    {
+      type: "pie",
+      dataPoints: countries
+    }
+    ]
+  });
+  let chartTwo = new CanvasJS.Chart("chartContainerTwo", {
+    theme: "dark2",
+    animationEnabled: true,
+    title:{
+      text: ""
+    },
+    data: [
+    {
+      type: "pie",
+      dataPoints: shipCountries
+    }
+    ]
+  });
+  let chartThree = new CanvasJS.Chart("chartContainerThree", {
+    theme: "dark2",
+    animationEnabled: true,
+    title:{
+      text: ""
+    },
+    data: [
+    {
+      type: "column",
+      dataPoints: newOrderFreight
+    }
+    ]
+  });
+  chartOne.render();
+  chartTwo.render();
+  chartThree.render();
+}
+</script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+

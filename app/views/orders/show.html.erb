@@ -1,0 +1,48 @@
+<div class="container">
+  <div class='row' id='orderBox'>
+    <div class='col-sm'>
+      <h2><%= "Order #{@order.orderid}" %></h2>
+      <hr>
+      <p><b>Order Employee  Id: </b> <%= @order.employee_id %></p>
+      <p><b>Order Ship Via: </b> <%= @order.ship_via %></p>
+      <p><b>Order Freight:</b> <%= @order.freight %> $</p>
+      <p><b>Order Ship Name:</b> <%= @order.ship_name %></p>
+      <p><b>Order Ship Address:</b> <%= @order.ship_adress %></p>
+      <p><b>Order Ship City:</b> <%= @order.ship_city %></p>
+      <p><b>Order Ship Postal Code:</b> <%= @order.ship_postal_code %></p>
+      <div style='margin-bottom: 20px'>
+        <%= link_to "See All Orders", orders_path, class:"btn btn-primary" %>
+        <br>
+        <br>
+         <%= link_to "Edit Order", edit_order_path(@order), class:'btn btn-secondary' %>
+      </div>
+      <div id='orderImage'>
+        <%= image_tag "https://images.unsplash.com/photo-1578575437130-527eed3abbec?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80", width:"300px", height:"200px" %>
+      </div>
+    </div>
+   </div>
+   <div class="col-sm">
+      <% if @order.products.exists? %>
+        <table>
+          <tbody>
+            <tr>
+              <th colspan="4"><h2>Products</h2></th>
+            </tr>
+            <tr>
+              <% @order.products.each do |product| %>
+              <td><h4>Product <%= product.productid %></h4></td>
+              <td><p><b>Product Price:</b> <%= product.unit_price %> $</p></td>
+              <td><p><b>Product Quantity:</b> <%= product.quantity %></p></td>
+              <td><%= link_to "See product details", product_path(product) %></td>
+            </tr>
+          <div>
+
+          </div>
+        <% end %>
+      <% else %>
+        <p>You need to add product</p>
+      <% end %>
+        </tbody>
+      </table>
+    </div>
+</div>

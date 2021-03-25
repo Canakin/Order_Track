@@ -1,0 +1,24 @@
+<div class='container'>
+  <div class='card-body'>
+    <div class='form_style'>
+      <h2>Add new order <i class="fas fa-user-plus"></i></h2>
+      <hr>
+        <%= simple_form_for @order do |f| %>
+          <%= f.input :employee_id, label: "Employee ID" %>
+          <%= f.input :order_date, label:"Order Date" %>
+          <%= f.input :require_date, label:'Require Date' %>
+          <%= f.input :ship_via, label:'Ship Via', hint:'Enter an integer!' %>
+          <%= f.input :freight, label:'Freight' %>
+          <%= f.input :ship_name, label:"Ship Name" %>
+          <%= f.input :ship_adress, label:'Ship Address' %>
+          <%= f.input :ship_city, label:'Ship City'%>
+          <%= f.input :ship_postal_code, label:'Ship Postal Code' %>
+          <%= f.input :shio_country, label:'Ship Country' %>
+          <%= f.input :customer_id, as: :integer, label:'Customer ID' %>
+          <%= f.submit %>
+        <% end %>
+    </div>
+    <%= link_to 'Back to orders', orders_path, class:'btn btn-secondary', id:'btn_center' %>
+  </div>
+</div>
+

@@ -1,2 +1,69 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class='container'>
+  <div class="card-body" id='homeFirstPart'>
+    <div id='headingsPart'>
+      <% if @user.present?  %>
+      <h1>Welcome to OrderTrack App <%= current_user.first_name %></h1>
+      <% else %>
+      <h1>Welcome to OrderTrack App</h1>
+      <% end %>
+      <h2>You can see your customers and all of their orders here! </h2>
+      <p>Easy, fast, understandable and clear way to see all the customers who had orders. Don't forget, some secrets are hidden in the details. Try as soon as possible to make difference.</p>
+    </div>
+    <div id='homeImage'>
+      <%= image_tag "https://images.unsplash.com/photo-1506784781895-38847b5e50e7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=670&q=80", height:400, width:300 %>
+    </div>
+  </div>
+
+  <div class='card-body'>
+    <div id='pagesInfo'>
+      <h4>Pages Info</h4>
+      <hr>
+      <div class='pagesBrief'>
+        <p><b>Customers: </b> On customers page, you can see the list of all customers. The company names and adresses of the customers can be reached via this page. You can also search customer by their names or address. Additionally, for having more information about the customers, you can click on the company name and see the details about the customer in full detail.</p>
+        <%= image_tag "https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80"%>
+      </div>
+      <div class='pagesBrief'>
+        <%= image_tag "https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80" %>
+        <p><b>Orders: </b>On orders page, likewise "Customers" page, you can see the list of all orders and some of their details. You can also search the order you want to reach by just typing thier shipment city or employee id. By clicking the order, you can see the details of the order on a new page along with the details of the product that belongs to the current order. </p>
+      </div>
+      <div class='pagesBrief'>
+        <p><b>Statistics: </b>On the statistics page you can see the descriptive statistics and some useful graphics about the customers, orders and products. </p>
+        <%= image_tag "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1390&q=80" %>
+      </div>
+      <div class='pagesBrief'>
+        <%= image_tag "https://images.unsplash.com/photo-1586769852044-692d6e3703f0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80" %>
+        <p><b>Contacts: </b>Contacts page will display you the information about how you can reach us when you have any question or valuable ideas.</p>
+      </div>
+    </div>
+  </div>
+
+  <button onclick='goToTop()' id='myBtn' title='Go to top'>Top</button>
+  <div id='vision'>
+    <h2>Our Vision</h2>
+    <p>Our vision is to be the best order following app that provide best valuable information and insights to our users. </p>
+  </div>
+  <% if user_signed_in? %>
+    <div></div>
+  <% else %>
+    <div><%= link_to "Login to Start",new_user_session_path, class:'btn btn-secondary', id:'btn_center' %></div>
+  <% end %>
+</div>
+
+<script>
+  // JS file for useful part of all app pages
+  const topbutton = document.getElementById('myBtn');
+  window.onscroll = function() {scrollFunction()}
+
+  const scrollFunction = () => {
+    if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
+      topbutton.style.display = "block";
+    } else {
+      topbutton.style.display = "none";
+    }
+  }
+
+  const goToTop = () => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+</script>

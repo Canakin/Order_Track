@@ -1,0 +1,165 @@
+// Customer side divisions
+#customersAll {
+  display: grid;
+  grid-template-columns:1fr 1fr 1fr 1fr;
+  grid-gap:16px;
+}
+
+#customer_card {
+  background:linear-gradient($appwhite, $applightblue);
+  box-shadow: 2px 2px 2px gray;
+  h4 {
+    margin:10px;
+    color:$appdarkgreen;
+  }
+  p {
+    margin:10px;
+    color:$appdarkerblue;
+  }
+}
+
+#customerButtons {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-top:30px;
+}
+
+// Order side divisions
+#orderAll {
+  display: grid;
+  grid-template-columns:1fr 1fr 1fr 1fr;
+  grid-gap:16px;
+}
+
+#orderDetail {
+  color:$appdarkgreen;
+  letter-spacing:1px;
+}
+
+#orderBox {
+  box-shadow:2px 2px 2px  2px gray;
+  text-align:center;
+  padding:40px;
+  color:$appdarkerblue;
+  margin-bottom:60px;
+  margin-top:60px;
+  letter-spacing:1px  ;
+  h2, h3 {
+    font-weight: bold;
+  }
+}
+
+#orderImage {
+  margin-top:40px;
+  img {
+    box-shadow:2px 2px 2px gray;
+  }
+}
+
+// Other pages divisions
+#contactInfo {
+  margin:auto;
+  display:block;
+  width:50%;
+  h1 {
+    text-align: center;
+    font-family: 'Anton', sans-serif;
+    margin-bottom: 15px;
+    color:#1687a7;
+    margin-top: 10px;
+    font-size:46px;
+    text-shadow:1px 1px 1px gray;
+  }
+  p, a {
+    text-align: center;
+    margin-top: 20px;
+    font-family: 'Berkshire Swash', cursive;
+    font-size: 24px;
+    padding-bottom: 20px;
+    color:$appdarkgreen;
+  }
+  a:hover {
+    opacity:0.6;
+  }
+}
+
+#feedback {
+  border:1px solid gray;
+  box-shadow: 2px 2px 2px gray;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  width:75%;
+  display:block;
+  margin-left:auto;
+  margin-right: auto;
+  i {
+    font-size:22px;
+    margin-left:20px;
+    margin-bottom:20px;
+    color:$appdarkerblue;
+  }
+  p {
+    padding-top: 20px;
+    padding-left: 20px;
+    color:$appdarkerblue;
+  }
+}
+
+#icon {
+  margin:auto;
+  display:block;
+  width:30%;
+  height:50%;
+}
+
+#links_login {
+  a {
+    margin-bottom:20px;
+  }
+}
+
+#map {
+  display: block;
+  height: 300px;
+  width: 100%;
+  .marker {
+    background-image: url('mapbox-icon.png');
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+}
+
+#productDetails {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align:center;
+  color:$appdarkerblue;
+}
+
+#statsIntro {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  img {
+    box-shadow: 3px 3px 3px gray;
+    margin-left:30px;
+  }
+  img:hover {
+    opacity:50%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+

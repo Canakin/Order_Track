@@ -1,0 +1,12 @@
+<div class='container'>
+  <div class='card-body'>
+    <div class='form_style'>
+      <%= simple_form_for [:product_id, @feedback], url: product_feedback_path(@feedback) do |f|%>
+      <%= f.input :title, label: 'Feedback Title' %>
+      <%= f.input :content, label:'Feedback Content' %>
+      <%= f.button :submit, class:'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+

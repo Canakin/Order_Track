@@ -1,0 +1,38 @@
+<div class='container' id='allUserInfo'>
+  <div class='row'>
+    <div class='col-md-' id='userinfo'>
+      <h2>Profile Information</h2>
+      <hr>
+      <ul>
+        <li><b>Nickname: </b><%= @nickname %></li>
+        <li><b>Full Name: </b><%= @fullname %></li>
+        <li><b>Email: </b><%= @email %></li>
+        <li><b>Company Name: </b><%= @company_name %></li>
+        <li><b>Address: </b><%= @address %></li>
+        <li><b>Profession: </b><%= @profession %></li>
+        <li><b>Number of Feedbacks:</b> <%= @counter %></li>
+      </ul>
+      <h2>Products with your feedback</h2>
+      <ul>
+        <% @feedback_product.each do |feedback|  %>
+        <li><b><%= link_to "Product ID: #{feedback.product.productid}", product_path(feedback.product) %></b></li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class='col-md-' id='userimage'>
+      <% if current_user.photo.attached?  %>
+        <%= image_tag current_user.photo , id:'userimage'%>
+      <% end %>
+    </div>
+  </div>
+  <div id='buttonsdiv'>
+    <div>
+      <%= link_to "Update Profile Info", edit_user_registration_path, class:'btn btn-primary' %>
+    </div>
+    <div>
+      <%= link_to 'Delete Account', user_registration_path, method: :delete, data: { confirm: 'Are you sure you want to delete your review?'}, class:'btn btn-danger'%>
+    </div>
+  </div>
+</div>
+

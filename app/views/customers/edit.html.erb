@@ -1,0 +1,21 @@
+<div class='container'>
+  <div class='card-body'>
+    <div class='form_style'>
+      <h2>Edit <%= @customer.company_name %> Info</h2>
+      <hr>
+      <%= simple_form_for @customer do |f| %>
+        <%= f.input :company_name, label: "Company Name" %>
+        <%= f.input :address, label:"Address" %>
+        <%= f.input :contact_title, label:'Contact Title' %>
+        <%= f.input :city, label:'City' %>
+        <%= f.input :postal_code, label:'Postal Code' %>
+        <%= f.input :country, label:"Country" %>
+        <%= f.input :phone, label:'Phone' %>
+        <%= f.input :fax, label:'Fax'%>
+        <%= f.input :customer_id, label:'Customer ID' %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+    <%= link_to 'Back to customers', customers_path, class:'btn btn-secondary', id:'btn_center' %>
+  </div>
+</div>

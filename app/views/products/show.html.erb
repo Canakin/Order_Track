@@ -1,0 +1,36 @@
+<div class='container'>
+  <div class='col-lg-'>
+    <h1>Product Details</h1>
+    <hr>
+    <div id='productDetails'>
+      <h3>Product ID: <%= @product.productid %></h3>
+      <p><b>Product Price:</b> <%= @product.unit_price %> $</p>
+      <p><b>Product Quantity:</b> <%= @product.quantity %> units</p>
+      <p><b>Product Discount:</b> <%= @product.discount * 100 %>%</p>
+    </div>
+    <hr>
+    <h4 align='center'>Feedbacks</h4>
+    <% @product.feedbacks.each do |feedback| %>
+    <div id='feedback'>
+      <% if feedback.present? %>
+        <p><b>Nickname: </b> <%= feedback.user.nickname %></p>
+        <p><b>Title: </b><%= feedback.title %></p>
+        <p><b>Content: </b><%= feedback.content %></p>
+        <% if feedback.user == current_user %>
+          <%= link_to product_feedback_path(@product, feedback), method: :delete, data: { confirm: 'Are you sure you want to delete your feedback?'} do %>
+            <i class="fa fa-trash destroy_feedback"></i>
+          <% end  %>
+          <%= link_to edit_product_feedback_path(@product, feedback) do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
+        <% end %>
+      <% else %>
+        <p><%= "Currently has no feedback!" %></p>
+      <% end %>
+    <% end %>
+    </div>
+    <%= link_to "Share your feedback", new_product_feedback_path(@product), class:"btn btn-secondary", id:'btn_center' %>
+  </div>
+</div>
+
+

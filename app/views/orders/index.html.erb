@@ -1,0 +1,43 @@
+<div class='container'>
+  <br>
+  <h1>Orders</h1>
+  <hr>
+  <div class='card-body'>
+    <h3>Search & Filter </h3>
+    <%= form_for orders_path, method: :get do |form| %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a order by company name, country, city or employee ID"
+      %>
+      <br>
+      <%= label_tag "products", "Click for orders with more than one products" %>
+      <%= check_box_tag :products%>
+      <br>
+      <br>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% end %>
+    <br>
+    <div id='customerButtons'>
+      <%= link_to "Clear Search Options", orders_path, class:'btn btn-primary' %>
+      <%= link_to "Add New Order", new_order_path, class:'btn btn-secondary' %>
+    </div>
+    <hr>
+  </div>
+  <div id='orderAll'>
+    <% @orders.each do |order| %>
+    <div class='card' id='customer_card'>
+    <%= link_to order_path(order) do %>
+      <h2><%= "Order #{order.orderid}" %></h2>
+    <% end %>
+      <p><b>Employee Id:</b> <%= order.employee_id %></p>
+      <p><b>Order Freight:</b> <%= order.freight %></p>
+      <p><b>Order Customer:</b> <%= order.customer.company_name %></p>
+      <p><b>Ship Country:</b> <%= order.shio_country %></p>
+      <p><b>Ship City:</b> <%= order.ship_city %></p>
+      <hr>
+    </div>
+    <% end %>
+  </div>
+  <button onclick='goToTop()' id='myBtn' title='Go to top'>Top</button>
+</div>

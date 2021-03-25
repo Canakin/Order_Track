@@ -1,0 +1,25 @@
+.footer {
+  margin-top: 30px;
+  background: #d3e0ea;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:20px;
+  .social-media {
+    font-size:24px;
+    opacity:50%;
+    margin-left:50px;
+    a {
+      padding:10px;
+      color:#276678;
+      opacity: 0.5;
+    }
+    a :hover {
+      color:gray;
+    }
+  }
+  .copyright {
+    margin-right:50px;
+    color:#276678;
+  }
+}
