@@ -17,4 +17,10 @@ class ProductsController < ApplicationController
       render new_product_path
     end
   end
+
+  private
+
+  def product_params
+    params.require(:product).permit(:productid, :unit_price, :quantity, :discount, :order_id)
+  end
 end

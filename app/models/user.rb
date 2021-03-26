@@ -7,5 +7,6 @@ class User < ApplicationRecord
     (?=.*\d)
     (?=.*[a-z])
   /x
-  validates :password, format: password_requirements
+  validates :email, presence: true, uniqueness: true
+  validates :password, format: password_requirements, on: :create
 end

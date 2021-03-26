@@ -35,14 +35,13 @@
               <td><p><b>Product Quantity:</b> <%= product.quantity %></p></td>
               <td><%= link_to "See product details", product_path(product) %></td>
             </tr>
-          <div>
-
-          </div>
-        <% end %>
+            <% end %>
+          </tbody>
+        </table>
       <% else %>
         <p>You need to add product</p>
       <% end %>
-        </tbody>
-      </table>
+        <br>
+        <%= link_to 'Add new product', new_product_path, class:'btn btn-secondary', id:'btn_center' %>
     </div>
 </div>

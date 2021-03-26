@@ -6,9 +6,9 @@
         <%= simple_form_for @product do |f| %>
           <%= f.input :productid, label: "Product ID" %>
           <%= f.input :unit_price, as: :float, label:'Unit Price' %>
-          <%= f.input :quantity, label:'Quantity' %>
+          <%= f.input :quantity, as: :integer, label:'Quantity' %>
           <%= f.input :discount, as: :float, label:'Discount', hint:'Enter an percentage!' %>
-          <%= f.input :order_id, label:'Order ID' %>
+          <%= f.input :order_id, as: :integer, label:'Order ID' %>
           <%= f.submit %>
         <% end %>
     </div>
