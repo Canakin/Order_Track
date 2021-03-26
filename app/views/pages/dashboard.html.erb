@@ -4,12 +4,12 @@
       <h2>Profile Information</h2>
       <hr>
       <ul>
-        <li><b>Nickname: </b><%= @nickname %></li>
+        <li><b>Nickname: </b><%= current_user.nickname %></li>
         <li><b>Full Name: </b><%= @fullname %></li>
-        <li><b>Email: </b><%= @email %></li>
-        <li><b>Company Name: </b><%= @company_name %></li>
-        <li><b>Address: </b><%= @address %></li>
-        <li><b>Profession: </b><%= @profession %></li>
+        <li><b>Email: </b><%= current_user.email %></li>
+        <li><b>Company Name: </b><%= current_user.company_name %></li>
+        <li><b>Address: </b><%= current_user.address %></li>
+        <li><b>Profession: </b><%= current_user.profession %></li>
         <li><b>Number of Feedbacks:</b> <%= @counter %></li>
       </ul>
       <h2>Products with your feedback</h2>

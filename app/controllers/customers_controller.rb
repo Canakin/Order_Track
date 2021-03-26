@@ -2,7 +2,7 @@ class CustomersController < ApplicationController
   before_action :find_customer, only: [:show, :edit, :update, :destroy]
   def index
     searching
-    @markers = [{ lat: 51.32, lng: 0.5 }, { lat: 52.30, lng: 13.25 }, { lat: 40.26, lng: 3.24 },{ lat: 48.48, lng: 2.20 },{ lat: 50.9, lng: 6.96 }]
+    set_marker
   end
 
   def show
@@ -57,6 +57,7 @@ class CustomersController < ApplicationController
   end
 
   def searching
+    # Both searching and filtering method
     if params[:query].present?
       sql_query = " \
         customers.company_name @@ :query \
@@ -64,14 +65,19 @@ class CustomersController < ApplicationController
         OR customers.city @@ :query \
       "
       if params[:orders].present?
-        customer_with_orders = []
-        Customer.where(sql_query, query: "%#{params[:query]}%").each { |customer| customer.orders.exists? ? customer_with_orders << customer : customer_with_orders }
-        @customers = customer_with_orders
+        @customers = []
+        Customer.where(sql_query, query: "%#{params[:query]}%").each { |customer| customer.orders.exists? ? @customers << customer : @customers }
       else
         @customers = Customer.where(sql_query, query: "%#{params[:query]}%")
       end
     else
       @customers = Customer.all
     end
+  end
+
+  def set_marker
+    # Settings markers list consisting of coordinates of cities that our customer is located
+    @markers = []
+    Customer.all.each { |customer| @markers << { lat: customer.latitude, lng: customer.longitude } }
   end
 end

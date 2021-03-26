@@ -28,7 +28,7 @@
         </li>
 
         <li class="nav-item dropdown">
-          <% if current_user.photo.nil? %>
+          <% if current_user.photo.attached? %>
             <%= image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% else  %>
             <%= image_tag "https://toppng.com/uploads/preview/menu-icon-png-3-lines-11552739325vwldrdcxa3.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>

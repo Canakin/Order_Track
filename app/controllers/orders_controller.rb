@@ -41,6 +41,7 @@ class OrdersController < ApplicationController
   private
 
   def searching
+    # both searching and filterin results method
     if params[:query].present?
       sql_query = "\
         employee_id @@ :query \
@@ -50,9 +51,8 @@ class OrdersController < ApplicationController
         OR ship_name @@ :query \
         "
       if params[:products].present?
-        orders_with_products = []
-        Order.where(sql_query, query: "%#{params[:query]}%").each { |order| order.products.count > 1 ? orders_with_products << order : orders_with_products }
-        @orders = orders_with_products
+        @orders = []
+        Order.where(sql_query, query: "%#{params[:query]}%").each { |order| order.products.count > 1 ? @orders << order : @orders }
       else
         @orders = Order.where(sql_query, query: "%#{params[:query]}%")
       end

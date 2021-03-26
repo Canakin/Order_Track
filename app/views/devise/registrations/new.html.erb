@@ -13,14 +13,17 @@
                       input_html: { autocomplete: "email" }%>
           <%= f.input :password,
                       required: true,
-                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                      autofocus: true,
+                      hint: ("#{@minimum_password_length} characters minimum, at least one integer and one lowercase letter" if @minimum_password_length),
                       input_html: { autocomplete: "new-password" } %>
           <%= f.input :password_confirmation,
                       required: true,
+                      autofocus: true,
                       input_html: { autocomplete: "new-password" },
                       label:'Password Confirmation' %>
           <%= f.input :nickname,
                       label:'Nickname',
+                      autofocus: true,
                       required: true,
                       input_html: { autocomplete: "nickname" } %>
           <%= f.input :first_name, label:'First Name' %>

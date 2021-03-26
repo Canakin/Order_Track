@@ -1,10 +1,8 @@
 # Seed file for our database where we create our objects for our database
-
 require 'json'
 require 'open-uri'
 
 puts 'destroying all objects'
-
 User.destroy_all
 Customer.destroy_all
 Order.destroy_all
@@ -26,12 +24,11 @@ url = "https://northwind.netcore.io/customers.json"
 customers_serialized = open(url).read
 customers_list = JSON.parse(customers_serialized)
 
-customers_list["customers"].each do |customer|
+customers_list["results"].each do |customer|
   fax_number = customer["fax"].blank? ? "No Fax":customer["fax"]
   postal_c = customer["postalCode"].blank? ? "No Postal Code":customer["postalCode"]
   Customer.create!(company_name: customer["companyName"], contact_title: customer["contactName"],address:customer["address"], city:customer["city"], postal_code:postal_c, country: customer["country"], phone:customer["phone"], fax:fax_number, customer_id:customer["id"])
 end
-
 puts "customers created!"
 
 urlsecond = "https://northwind.netcore.io/orders.json"
@@ -39,7 +36,6 @@ orders_serilized = open(urlsecond).read
 orders_list = JSON.parse(orders_serilized)
 
 puts "creating orders!"
-
 orders_list["results"].each do |result|
   Customer.all.each do |customer|
     if result["order"]["customerId"] == customer.customer_id
@@ -52,5 +48,4 @@ orders_list["results"].each do |result|
     end
   end
 end
-
 puts "Orders & Product created successfully !"

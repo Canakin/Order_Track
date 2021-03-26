@@ -143,50 +143,51 @@
   const countries = JSON.parse(document.getElementById('chartContainer').dataset.markers)
   const shipCountries = JSON.parse(document.getElementById('chartContainerTwo').dataset.markers)
   const newOrderFreight = JSON.parse(document.getElementById('chartContainerThree').dataset.markers)
-  window.onload = function () {
-  let chartOne = new CanvasJS.Chart("chartContainer", {
-    theme: "dark2",
-    animationEnabled: true,
-    title:{
-      text: ""
-    },
-    data: [
-    {
-      type: "pie",
-      dataPoints: countries
-    }
-    ]
-  });
-  let chartTwo = new CanvasJS.Chart("chartContainerTwo", {
-    theme: "dark2",
-    animationEnabled: true,
-    title:{
-      text: ""
-    },
-    data: [
-    {
-      type: "pie",
-      dataPoints: shipCountries
-    }
-    ]
-  });
-  let chartThree = new CanvasJS.Chart("chartContainerThree", {
-    theme: "dark2",
-    animationEnabled: true,
-    title:{
-      text: ""
-    },
-    data: [
-    {
-      type: "column",
-      dataPoints: newOrderFreight
-    }
-    ]
-  });
-  chartOne.render();
-  chartTwo.render();
-  chartThree.render();
-}
-</script>
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
+  window.onload = function () {createCharts()}
+
+  const createCharts = () => {
+    let chartOne = new CanvasJS.Chart("chartContainer", {
+      theme: "dark2",
+      animationEnabled: true,
+      title:{
+        text: ""
+      },
+      data: [
+      {
+        type: "pie",
+        dataPoints: countries
+      }
+      ]
+    });
+    let chartTwo = new CanvasJS.Chart("chartContainerTwo", {
+      theme: "dark2",
+      animationEnabled: true,
+      title:{
+        text: ""
+      },
+      data: [
+      {
+        type: "pie",
+        dataPoints: shipCountries
+      }
+      ]
+    });
+    let chartThree = new CanvasJS.Chart("chartContainerThree", {
+      theme: "dark2",
+      animationEnabled: true,
+      title:{
+        text: ""
+      },
+      data: [
+      {
+        type: "column",
+        dataPoints: newOrderFreight
+      }
+      ]
+    });
+    chartOne.render();
+    chartTwo.render();
+    chartThree.render();
+  }
+</script>
