@@ -26,16 +26,16 @@
     <hr>
   </div>
   <div id='customersAll'>
-      <% @customers.each do |customer| %>
-      <div class='card' id='customer_card'>
-        <%= link_to customer_path(customer) do %>
-        <h4><%= customer.company_name %></h4>
-        <% end %>
-        <p><b>Address:</b> <%= customer.address %></p>
-        <p><b>Country:</b> <%= customer.country %></p>
-        <p><b>City:</b> <%= customer.city %></p>
-      </div>
+    <% @customers.each do |customer| %>
+    <div class='card' id='customer_card'>
+      <%= link_to customer_path(customer) do %>
+      <h4><%= customer.company_name %></h4>
       <% end %>
+      <p><b>Address:</b> <%= customer.address %></p>
+      <p><b>Country:</b> <%= customer.country %></p>
+      <p><b>City:</b> <%= customer.city %></p>
+    </div>
+    <% end %>
   </div>
   <h3>Address of the Customer</h3>
   <div id="map"

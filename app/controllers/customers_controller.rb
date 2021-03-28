@@ -78,6 +78,6 @@ class CustomersController < ApplicationController
   def set_marker
     # Settings markers list consisting of coordinates of cities that our customer is located
     @markers = []
-    Customer.all.each { |customer| @markers << { lat: customer.latitude, lng: customer.longitude } }
+    @customers.each { |customer| @markers << { lat: customer.latitude, lng: customer.longitude } }
   end
 end

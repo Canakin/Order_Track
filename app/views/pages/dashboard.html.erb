@@ -14,8 +14,14 @@
       </ul>
       <h2>Products with your feedback</h2>
       <ul>
-        <% @feedback_product.each do |feedback|  %>
-        <li><b><%= link_to "Product ID: #{feedback.product.productid}", product_path(feedback.product) %></b></li>
+        <% if @feedback_product.nil? %>
+          <span>Currently have no feedbacks</span>
+        <% else %>
+          <% @feedback_product.each do |feedback|  %>
+            <% if feedback.user == current_user %>
+              <li><b><%= link_to "Product ID: #{feedback.product.productid}", product_path(feedback.product) %></b></li>
+            <% end %>
+          <% end %>
         <% end %>
       </ul>
     </div>
@@ -26,6 +32,7 @@
       <% end %>
     </div>
   </div>
+
   <div id='buttonsdiv'>
     <div>
       <%= link_to "Update Profile Info", edit_user_registration_path, class:'btn btn-primary' %>

@@ -3,7 +3,7 @@
     <div class='form_style'>
       <h2>Add new order <i class="fas fa-user-plus"></i></h2>
       <hr>
-        <%= simple_form_for @order do |f| %>
+        <%= simple_form_for [:customer_id, @order], url:customer_orders_path(params[:customer_id]) do |f| %>
           <%= f.input :employee_id, label: "Employee ID" %>
           <%= f.input :order_date, as: :date %>
           <%= f.input :require_date, as: :date %>
@@ -14,8 +14,7 @@
           <%= f.input :ship_city, label:'Ship City'%>
           <%= f.input :ship_postal_code, label:'Ship Postal Code' %>
           <%= f.input :shio_country, label:'Ship Country' %>
-          <%= f.input :customer_id, as: :integer, label:'Customer ID' %>
-          <%= f.input :product_ids, as: :integer, label:'Product ID' %>
+          <%= f.input :orderid, as: :integer, label:'Order ID' %>
           <%= f.submit %>
         <% end %>
     </div>

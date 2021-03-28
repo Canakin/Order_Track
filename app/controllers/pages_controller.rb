@@ -18,9 +18,16 @@ class PagesController < ApplicationController
   def dashboard
     @fullname = "#{current_user.first_name} #{current_user.last_name}"
     @counter = 0
-    products = []
-    @feedbacks = Feedback.all.each { |feedback| feedback.user == current_user ? @counter += 1 : @counter }
-    @feedback_product = Feedback.all.each { |feedback| feedback.user == current_user ? products << feedback : products }
+    @feedback_product = []
+    Feedback.all.each do |feedback|
+      if feedback.user == current_user
+        @counter += 1
+        @feedback_product << feedback
+      else
+        @feedback_product
+        @counter
+      end
+    end
   end
 
   private

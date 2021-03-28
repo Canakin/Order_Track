@@ -22,6 +22,7 @@
         <hr>
       <% end %>
     <% end %>
+    <%= link_to 'Add new order', new_customer_order_path(@customer), class:'btn btn-secondary', id:'btn_center' %>
     </div>
     <div id='customerButtons'>
       <%= link_to "See all Customers", customers_path, class:'btn btn-primary' %>

@@ -12,10 +12,8 @@ class OrdersController < ApplicationController
 
   def create
     @customer = Customer.find(params[:customer_id])
-    @product = Product.find(params[:product_id])
     @order = Order.new(order_params)
     @order.customer = @customer
-    @order.product = @product
     if @order.save!
       redirect_to orders_path
     else

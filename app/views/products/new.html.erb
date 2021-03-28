@@ -3,12 +3,11 @@
     <div class='form_style'>
       <h2>Add new product <i class="fas fa-user-plus"></i></h2>
       <hr>
-        <%= simple_form_for @product do |f| %>
+        <%= simple_form_for [:order_id, @product], url: order_products_path(params[:order_id]) do |f| %>
           <%= f.input :productid, label: "Product ID" %>
           <%= f.input :unit_price, as: :float, label:'Unit Price' %>
           <%= f.input :quantity, as: :integer, label:'Quantity' %>
-          <%= f.input :discount, as: :float, label:'Discount', hint:'Enter an percentage!' %>
-          <%= f.input :order_id, as: :integer, label:'Order ID' %>
+          <%= f.input :discount, input_html: { step: 0.01 }, label:'Discount', hint:'Enter an percentage!' %>
           <%= f.submit %>
         <% end %>
     </div>
